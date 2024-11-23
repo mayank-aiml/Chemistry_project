@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First law</title>
+</head>
+
+<body>
+    <table border="0" width="100%" height="100%">
+        <tr>
+            <td align="center" valign="middle">
+                <h1>First Law of Thermodynamics</h1>
+                <h1> </h1>
+            </td>
+        </tr>
+    </table>
+
+    <body>
+        <style>
+            body {
+                background-image: url('img2.jpeg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+
+            .link-container {
+                text-align: center;
+                background-color: #fce4ec;
+                padding: 20px 40px;
+                border-radius: 100px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            }
+
+
+            .link-container a {
+                display: block;
+                font-size: 1.3em;
+                color: #000000;
+                margin: 10px 0;
+                text-decoration: none;
+                padding: 10px;
+                border-radius: 5px;
+                transition: background-color 0.3s, color 0.3s;
+                font-weight: bold;
+            }
+
+
+            .link-container a:hover {
+                background-color: #0073e6;
+                color: #ffffff;
+            }
+
+            .code {
+                background-color: #1918189e;
+                color: #ffffff93;
+                page-break-inside: avoid;
+                font-family: monospace;
+                font-size: 15px;
+                
+                margin-bottom: 1.6em;
+                max-width: 100%;
+                overflow: auto;
+                padding: 1em 1.5em;
+                display: block;
+                word-wrap: break-word;
+            }
+            .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            }
+            .formula {
+            background: #fce4ec;
+            color: #d81b60;
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px solid #ff4081;
+        }
+        </style>
+        
+
+        
+        <div class="container">
+            <h1 align="center">Thermodynamics</h1>
+        
+            <!-- Theory Section -->
+            <p>
+                The <strong>First Law of Thermodynamics</strong>, also known as the Law of Energy Conservation, states that energy cannot be created or destroyed in an isolated system. It is a fundamental concept describing how energy behaves during chemical and physical changes.
+            </p>
+        
+            <h3>Key Formula</h3>
+            <p>Mathematically, the First Law of Thermodynamics can be expressed as:</p>
+            <div class="formula">ΔU = q + w</div>
+            <p>where:</p>
+            <ul>
+                <li><strong>ΔU</strong> = Change in internal energy of the system</li>
+                <li><strong>q</strong> = Heat added to the system</li>
+                <li><strong>w</strong> = Work done on the system</li>
+            </ul>
+        
+            <h3>Understanding the First Law</h3>
+            <p>
+                In practical terms, the First Law tells us that the energy of a system is affected by the heat added or removed from it and the work done on or by it. This energy is stored as internal energy within the system.
+            </p>
+        
+            <h3>Types of Processes</h3>
+            <p>The First Law applies differently in various thermodynamic processes:</p>
+            <ul>
+                <li><strong>Isothermal Process</strong>: Temperature remains constant (ΔU = 0, so q = -w).</li>
+                <li><strong>Adiabatic Process</strong>: No heat is exchanged with surroundings (q = 0, so ΔU = w).</li>
+                <li><strong>Isochoric Process</strong>: Volume remains constant (w = 0, so ΔU = q).</li>
+                <li><strong>Isobaric Process</strong>: Pressure remains constant (ΔU = q - PΔV).</li>
+            </ul>
+        
+            <h3>Application Example</h3>
+            <p>
+                Consider a gas inside a piston. When heat is added to the gas, it expands, pushing against the piston, which does work on the surroundings. According to the First Law, the energy change in the gas (internal energy) equals the heat added plus the work done by the gas.
+            </p>
+        
+            <h3>Implications of the First Law</h3>
+            <p>
+                This law is fundamental to understanding energy transfer in reactions, engine cycles, and various processes in chemistry and physics. It also sets the foundation for the concepts of enthalpy, entropy, and the later laws of thermodynamics.
+                <div class="link-container">
+            <p><a href="calculator.html">Calculate U </a></p>
+            <p><a href="work.html">Calculate Work</a></p>
+        
+        <pre >
+            <h2>This is C++ code to find workdone by system</h2>
+        <code class="code">
+            #include &lt iostream &gt
+                #include &lt cmath &gt
+                using namespace std;
+                
+                int main() {
+                    int processType, reversibleType;
+                    double W = 0;
+                
+                    cout << "Select the type of process:\n";
+                    cout << "1. Reversible\n";
+                    cout << "2. Irreversible\n";
+                    cout << "Enter your choice (1 or 2): ";
+                    cin >> processType;
+                
+                    if (processType == 1) {
+                        cout << "Select the type of reversible process:\n";
+                        cout << "1. Isothermal\n";
+                        cout << "2. Isobaric\n";
+                        cout << "3. Isochoric\n";
+                        cout << "Enter your choice (1, 2, or 3): ";
+                        cin >> reversibleType;
+                
+                        if (reversibleType == 1) {
+                            double n, T, Vi, Vf, R = 8.314;
+                            cout << "Enter the number of moles (n): ";
+                            cin >> n;
+                            cout << "Enter the temperature (T in K): ";
+                            cin >> T;
+                            cout << "Enter the initial volume (Vi in m^3): ";
+                            cin >> Vi;
+                            cout << "Enter the final volume (Vf in m^3): ";
+                            cin >> Vf;
+                            W = n * R * T * log(Vf / Vi);
+                            cout << "The work done (W) in an isothermal process is: " << W << " J" << endl;
+                
+                        } else if (reversibleType == 2) {
+                            double P, deltaV;
+                            cout << "Enter the pressure (P in Pa): ";
+                            cin >> P;
+                            cout << "Enter the change in volume (ΔV in m^3): ";
+                            cin >> deltaV;
+                            W = P * deltaV;
+                            cout << "The work done (W) in an isobaric process is: " << W << " J" << endl;
+                
+                        } else if (reversibleType == 3) {
+                            W = 0;
+                            cout << "The work done (W) in an isochoric process is: " << W << " J (no volume change)" << endl;
+                
+                        } else {
+                            cout << "Invalid choice." << endl;
+                        }
+                
+                    } else if (processType == 2) {
+                        double Q, deltaU;
+                        cout << "Enter the heat added to the system (Q): ";
+                        cin >> Q;
+                        cout << "Enter the change in internal energy (ΔU): ";
+                        cin >> deltaU;
+                        W = Q - deltaU;
+                        cout << "The work done (W) in an irreversible process is: " << W << " J" << endl;
+                
+                    } else {
+                        cout << "Invalid choice." << endl;
+                    }
+                
+                    return 0;
+                }
+                
+
+              
+        </code><br><br>
+        <video width="700"  controls>
+            <source src="1.mp4" type="video/mp4">
+            </video>
+
+
+
+        <h2>This is c++ code to find internal energy</h2>
+        <code class="code">
+            #include &lt iostream &gt
+                using namespace std;
+                
+                int main() {
+                    double Q, W, U;
+                    
+                    cout << "Enter the heat added to the system (Q): ";
+                    cin >> Q;
+                    
+                    cout << "Enter the work done on the system (W): ";
+                    cin >> W;
+                    
+                    U = Q + W;
+                    
+                    cout << "The internal energy (U) of the system is: " << U << " J" << endl;
+                
+                    return 0;
+                }
+                
+        </code>
+        <video width="700"  controls>
+            <source src="2.mp4" type="video/mp4">
+            </video>
+    </pre>
+
+    </body>
+
+</html>

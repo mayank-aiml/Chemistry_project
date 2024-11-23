@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Law of Thermodynamics Calculator</title>
+    <style>
+        body {
+            background-image: url('chem.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>First Law of Thermodynamics Calculator</h1>
+
+        <label for="processType">Select Process Type</label>
+        <select id="processType">
+            <option value="reversible">Reversible</option>
+            <option value="irreversible">Irreversible</option>
+        </select>
+
+        <div id="inputFields">
+            <!-- Reversible or Irreversible inputs will be dynamically generated here -->
+        </div>
+
+        <button onclick="calculate()">Calculate</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const inputFieldsDiv = document.getElementById("inputFields");
+
+        document.getElementById("processType").addEventListener("change", function () {
+            const processType = this.value;
+            generateInputs(processType);
+        });
+
+        function generateInputs(processType) {
+            inputFieldsDiv.innerHTML = ""; // Clear any existing inputs
+            if (processType === "reversible") {
+                inputFieldsDiv.innerHTML = `
+                    <label for="heat">Heat added to the system (Q in joules)</label>
+                    <input type="number" id="heat" placeholder="Enter heat in joules">
+
+                    <label for="pressure">Pressure (P in Pascals)</label>
+                    <input type="number" id="pressure" placeholder="Enter pressure in Pascals">
+
+                    <label for="volumeChange">Change in Volume (ΔV in cubic meters)</label>
+                    <input type="number" id="volumeChange" placeholder="Enter volume change in cubic meters">
+                `;
+            } else if (processType === "irreversible") {
+                inputFieldsDiv.innerHTML = `
+                    <label for="heat">Heat added to the system (Q in joules)</label>
+                    <input type="number" id="heat" placeholder="Enter heat in joules">
+
+                    <label for="work">Work done by the system (W in joules)</label>
+                    <input type="number" id="work" placeholder="Enter work in joules">
+                `;
+            }
+        }
+
+        function calculate() {
+            const processType = document.getElementById("processType").value;
+            const heat = parseFloat(document.getElementById("heat").value);
+
+            if (processType === "reversible") {
+                const pressure = parseFloat(document.getElementById("pressure").value);
+                const volumeChange = parseFloat(document.getElementById("volumeChange").value);
+                const work = pressure * volumeChange; // W = P * ΔV
+                const internalEnergyChange = heat - work;
+                document.getElementById("result").innerText = `For a reversible process, the change in internal energy (ΔU) is: ${internalEnergyChange} J`;
+            } else if (processType === "irreversible") {
+                const work = parseFloat(document.getElementById("work").value);
+                const internalEnergyChange = heat - work;
+                document.getElementById("result").innerText = `For an irreversible process, the change in internal energy (ΔU) is: ${internalEnergyChange} J`;
+            }
+        }
+
+        // Initialize with default process type
+        generateInputs("reversible");
+    </script>
+
+</body>
+
+</html>
